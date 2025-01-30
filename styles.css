@@ -1,62 +1,85 @@
+/*General text settings*/
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000000;
-            color: #ffffff;
-            text-align: center;
-            padding: 50px;
+                font-family: VT323, monospace;
+                font-size: 18px;
+                background-color: #000000;
+                color: #ffffff;
+                text-align: center;
+                padding: 50px;
         }
         h1 {
-            color: #00ff00;
+                color: #00ff00;
         }
         a {
-            color: #00ff00;
-            text-decoration: none;
+                color: #00ff00;
+                text-decoration: none;
         }
         a:hover {
-            text-decoration: underline;
+                text-decoration: underline;
         }
-        /* Navigation Styles */
-.navigation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
-}
 
-.nav-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-    border: 2px solid transparent;
-}
 
-.nav-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+/* Navigation Styles */
+        .navigation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
 
-.nav-button:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .nav-button {
+            padding: 15px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: 2px solid transparent;
+            width: 200px;
+            text-align: center;
+            display: inline-block;
+            box-sizing: border-box;
+            font-family: 'VT323', monospace;
+        }
 
-.fade-in {
-    animation: fadeIn 1s ease-out;
-}
+        .nav-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+/* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-button {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .nav-button:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .nav-button:nth-child(2) {
+    animation-delay: 0.4s;
+        }
+
+        .nav-button:nth-child(3) {
+            animation-delay: 0.6s;
+        }

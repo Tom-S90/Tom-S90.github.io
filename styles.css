@@ -85,3 +85,24 @@ a:hover {
 .nav-button:nth-child(3) {
     animation-delay: 0.6s;
 }
+
+/* Profile Image Styles */
+.profile-image {
+    width: 150px; /* Adjust size as needed */
+    height: 150px; /* Must match width for a perfect circle */
+    border-radius: 50%; /* Makes the image circular */
+    border: 3px solid #00ff00; /* Green border */
+    object-fit: cover; /* Ensures the image covers the circle without distortion */
+    margin-bottom: 20px; /* Space below the image */
+    box-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00; /* Glow effect */
+}
+
+/* Center the header content */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #111;
+    color: #0F0;
+    padding: 20px 0;
+}

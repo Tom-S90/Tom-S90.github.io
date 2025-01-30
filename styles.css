@@ -1,85 +1,87 @@
-/*General text settings*/
-        body {
-                font-family: VT323, monospace;
-                font-size: 18px;
-                background-color: #000000;
-                color: #ffffff;
-                text-align: center;
-                padding: 50px;
-        }
-        h1 {
-                color: #00ff00;
-        }
-        a {
-                color: #00ff00;
-                text-decoration: none;
-        }
-        a:hover {
-                text-decoration: underline;
-        }
+/* General text settings */
+body {
+    font-family: VT323, monospace;
+    font-size: 18px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #00ff00;
+}
+
+a {
+    color: #00ff00;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: bold;
+}
+
 
 
 /* Navigation Styles */
-        .navigation {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
+.navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
 
-        .nav-button {
-            padding: 15px 20px;
-            background-color: #00ff00;
-            color: black;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            border: 2px solid transparent;
-            width: 200px;
-            text-align: center;
-            display: inline-block;
-            box-sizing: border-box;
-            font-family: 'VT323', monospace;
-        }
+.nav-button {
+    padding: 15px 20px;
+    background-color: #00ff00;
+    color: black;
+    text-decoration: none;
+    border-radius: 25px; /* More rounded corners */
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    width: 200px;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    font-family: 'VT323', monospace;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
 
-        .nav-button:hover {
-            background-color: #009c00;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+.nav-button:hover {
+    background-color: #009c00;
+    transform: translateY(-3px) scale(1.05); /* Slightly scale up */
+    box-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00; /* Glow effect */
+    border: 2px solid #00ff00; /* Add a border on hover */
+}
 
-        .nav-button:active {
-            transform: translateY(0);
-            box-shadow: none;
-        }
+.nav-button:active {
+    transform: translateY(0) scale(1);
+    box-shadow: none;
+}
 
 /* Fade-in Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        .nav-button {
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out forwards;
-        }
+.nav-button:nth-child(1) {
+    animation-delay: 0.2s;
+}
 
-        .nav-button:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .nav-button:nth-child(2) {
+.nav-button:nth-child(2) {
     animation-delay: 0.4s;
-        }
+}
 
-        .nav-button:nth-child(3) {
-            animation-delay: 0.6s;
-        }
+.nav-button:nth-child(3) {
+    animation-delay: 0.6s;
+}

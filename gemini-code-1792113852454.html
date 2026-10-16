@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florería & Detalle - Inicio</title>
+    <style>
+        :root {
+            --primary-color: #5b7065;
+            --secondary-color: #8fa396;
+            --accent-color: #d4a373;
+            --bg-color: #f9fbf9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .cart-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cart-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero / Quienes Somos */
+        .hero {
+            background: linear-gradient(rgba(91, 112, 101, 0.85), rgba(91, 112, 101, 0.85)), url('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Servicios & Productos (POS) */
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .pos-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .pos-container {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none; /* Simplificado para prototipo móvil */
+            }
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-img {
+            height: 160px;
+            background-color: #e0e0e0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-price {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-stock {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .btn-add {
+            margin-top: auto;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-add:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-add:hover:not(:disabled) {
+            background-color: var(--secondary-color);
+        }
+
+        /* Cart / Checkout Panel */
+        .cart-panel {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            height: fit-content;
+        }
+
+        .cart-panel h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .cart-items {
+            list-style: none;
+            max-height: 250px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-checkout:hover {
+            opacity: 0.9;
+        }
+
+        /* Contacto & Mapa */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background: #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="switchSection('home')">🌸 FloraPrototipo</a>
+            <nav>
+                <ul>
+                    <li><a onclick="switchSection('home')" id="nav-home" class="active">Inicio</a></li>
+                    <li><a onclick="switchSection('pos')" id="nav-pos">Punto de Venta (Tienda)</a></li>
+                    <li><a onclick="switchSection('services')" id="nav-services">Servicios</a></li>
+                    <li><a onclick="switchSection('contact')" id="nav-contact">Contacto & Ubicación</a></li>
+                </ul>
+            </nav>
+            <button class="cart-btn" onclick="switchSection('pos')">
+                🛒 <span id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECCIÓN INICIO / QUIÉNES SOMOS -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>Expresa tus emociones con flores frescas</h1>
+                <p>Somos una florería artesanal dedicada a crear arreglos florales únicos para cada ocasión especial, garantizando calidad y entrega puntual.</p>
+                <a class="btn-primary" onclick="switchSection('pos')">Ver Catálogo en Vivo</a>
+            </div>
+
+            <div class="about-grid">
+                <div class="card">
+                    <h3>¿Quiénes Somos?</h3>
+                    <p>Fundada con la pasión de conectar corazones a través de la naturaleza, nuestra compañía combina diseño floral contemporáneo con un servicio cercano y confiable.</p>
+                </div>
+                <div class="card">
+                    <h3>Nuestra Misión</h3>
+                    <p>Ofrecer arreglos florales de la más alta calidad y frescura, facilitando pedidos inmediatos y programados mediante tecnología digital intuitiva.</p>
+                </div>
+                <div class="card">
+                    <h3>Nuestra Visión</h3>
+                    <p>Consolidarnos como el referente local líder en florería digital e innovación en puntos de venta en la nube dentro de nuestra región.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN SERVICIOS -->
+        <section id="services" class="section">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="about-grid">
+                <div class="card">
+                    <h3>Arreglos Personalizados</h3>
+                    <p>Diseñamos ramos y centros de mesa a la medida según tus gustos, paleta de colores y presupuesto para eventos corporativos o sociales.</p>
+                </div>
+                <div class="card">
+                    <h3>Pedidos Anticipados</h3>
+                    <p>Programa con semanas o días de anticipación tus entregas para fechas especiales como aniversarios, San Valentín o Día de las Madres.</p>
+                </div>
+                <div class="card">
+                    <h3>Punto de Venta Cloud & Delivery</h3>
+                    <p>Compra directa en nuestra web con inventario actualizado al momento y servicio de entrega rápida directo a domicilio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN PUNTO DE VENTA EN LA NUBE (POS) -->
+        <section id="pos" class="section">
+            <h2 class="section-title">Punto de Venta en la Nube (Inventario en Tiempo Real)</h2>
+            <div class="pos-container">
+                <!-- Catálogo de Productos -->
+                <div class="product-grid" id="product-grid">
+                    <!-- Productos inyectados por JS -->
+                </div>
+
+                <!-- Carrito y Checkout Inmediato -->
+                <div class="cart-panel">
+                    <h3>Tu Pedido Inmediato</h3>
+                    <ul class="cart-items" id="cart-items">
+                        <li style="color: #778899; text-align: center; padding: 1rem 0;">Tu carrito está vacío</li>
+                    </ul>
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="cart-total-price">$0.00</span>
+                    </div>
+                    <button class="btn-checkout" onclick="checkout()">Procesar Pedido Cloud</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CONTACTO Y MAPA -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Contacto y Ubicación</h2>
+            <div class="contact-grid">
+                <div class="card">
+                    <h3>Atención al Cliente y Casos</h3>
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">¿Dudas con un pedido anticipado o aclaraciones? Escríbenos.</p>
+                    <form onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" required placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" required placeholder="correo@ejemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Motivo / Caso</label>
+                            <select id="subject">
+                                <option value="pedido">Consulta sobre Pedido Anticipado</option>
+                                <option value="soporte">Soporte y Servicio al Cliente</option>
+                                <option value="otro">Otro Asunto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" rows="4" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Enviar Mensaje</button>
+                    </form>
+                </div>
+
+                <div>
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h3>Visítanos en nuestra sucursal</h3>
+                        <p>📍 Dirección: Av. Principal #452, Col. Centro</p>
+                        <p>📞 Teléfono / WhatsApp: (999) 555-1234</p>
+                        <p>⏰ Horarios: Lunes a Sábado de 9:00 AM a 7:00 PM</p>
+                    </div>
+                    <!-- Vínculo con Google Maps -->
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.383181816781!2d-89.62024522422964!3d20.973322180646965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f56714275f3a077%3A0xc3924619d45388c!2sPlaza%20Grande!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FloraPrototipo - Compañía Floricultora. Prototipo Académico para GitHub.</p>
+    </footer>
+
+    <script>
+        // --- BASE DE DATOS MOCK DE INVENTARIO EN TIEMPO REAL ---
+        let inventory = [
+            { id: 1, name: "Ramo de Rosas Rojas (12 pzs)", price: 450.00, stock: 8, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80" },
+            { id: 2, name: "Arreglo de Girasoles Silvestres", price: 380.00, stock: 5, image: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=500&q=80" },
+            { id: 3, name: "Caja de Tulipanes Holandeses", price: 620.00, stock: 3, image: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=500&q=80" },
+            { id: 4, name: "Orquídea Blanca en Maceta", price: 750.00, stock: 2, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=500&q=80" },
+            { id: 5, name: "Mix Tropical de Temporada", price: 490.00, stock: 10, image: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=500&q=80" },
+            { id: 6, name: "Ramo Minimalista de Lirios", price: 410.00, stock: 0, image: "https://images.unsplash.com/photo-1508784411958-bd9ca4e2eafc?auto=format&fit=crop&w=500&q=80" }
+        ];
+
+        let cart = [];
+
+        // --- NAVEGACIÓN ENTRE SECCIONES ---
+        function switchSection(sectionId) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            const navLink = document.getElementById('nav-' + sectionId);
+            if (navLink) navLink.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- RENDERIZAR PRODUCTOS (POS) ---
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            inventory.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-img" style="background-image: url('${product.image}')"></div>
+                    <div class="product-info">
+                        <div class="product-title">${product.name}</div>
+                        <div class="product-price">$${product.price.toFixed(2)} MXN</div>
+                        <div class="product-stock">Stock disponible: <strong>${product.stock}</strong></div>
+                        <button class="btn-add" ${product.stock === 0 ? 'disabled' : ''} onclick="addToCart(${product.id})">
+                            ${product.stock > 0 ? 'Agregar al Pedido' : 'Agotado'}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // --- GESTIÓN DEL CARRITO Y STOCK EN TIEMPO REAL ---
+        function addToCart(productId) {
+            const product = inventory.find(p => p.id === productId);
+            if (!product || product.stock <= 0) return;
+
+            product.stock--; // Descuenta inventario en tiempo real en la memoria del prototipo
+
+            const cartItem = cart.find(item => item.id === productId);
+            if (cartItem) {
+                cartItem.quantity++;
+            } else {
+                cart.push({ id: product.id, name: product.name, price: product.price, quantity: 1 });
+            }
+
+            renderProducts();
+            renderCart();
+        }
+
+        function renderCart() {
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotalPrice = document.getElementById('cart-total-price');
+            const cartCount = document.getElementById('cart-count');
+
+            cartItemsList.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = '<li style="color: #778899; text-align: center; padding: 1rem 0;">Tu carrito está vacío</li>';
+                cartTotalPrice.textContent = '$0.00';
+                cartCount.textContent = '0';
+                return;
+            }
+
+            let total = 0;
+            let totalCount = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                totalCount += item.quantity;
+
+                const li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML = `
+                    <span>${item.name} (x${item.quantity})</span>
+                    <span>$${itemTotal.toFixed(2)}</span>
+                `;
+                cartItemsList.appendChild(li);
+            });
+
+            cartTotalPrice.textContent = `$${total.toFixed(2)} MXN`;
+            cartCount.textContent = totalCount;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('El carrito está vacío. Agrega productos para realizar un pedido inmediato.');
+                return;
+            }
+            alert('¡Pedido realizado con éxito a través del Punto de Venta en la Nube! Gracias por tu compra.');
+            cart = [];
+            renderCart();
+            renderProducts();
+        }
+
+        // --- SIMULACIÓN ENVÍO DE CONTACTO ---
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            alert('¡Mensaje enviado con éxito! Nuestro equipo de atención al cliente se pondrá en contacto contigo a la brevedad.');
+            event.target.reset();
+        }
+
+        // Inicializar la aplicación
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
